@@ -7,15 +7,15 @@ import BasicCard from "./Card";
 export const Main = () => {
     const firestore = firebase.firestore();
 
-    const [dynamicMeditation,dynamicMeditationLoading] = useCollectionData(firestore.collection('Динамическая медитация'));
+    // const [dynamicMeditation,dynamicMeditationLoading] = useCollectionData(firestore.collection('Динамическая медитация'));
+    // const [yogaData, yogaLoading] = useCollectionData(firestore.collection('Йога'));
+    // const [aymData, aymLoading] = useCollectionData(firestore.collection('Аум'));
 
-    const [yogaData, yogaLoading] = useCollectionData(firestore.collection('Йога'));
+    const [eventsData, eventsLoading] = useCollectionData(firestore
+        .collection("events")
+        .orderBy("Тип", "asc"));
 
-    const [aymData, aymLoading] = useCollectionData(firestore.collection('Аум'));
-
-    const [eventsData, eventsLoading] = useCollectionData(firestore.collection('events'));
-
-    console.log(eventsData ,dynamicMeditation );
+    console.log(eventsData );
 
     return (
         <Container>
