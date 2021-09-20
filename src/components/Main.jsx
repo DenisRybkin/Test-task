@@ -23,7 +23,7 @@ export const Main = () => {
                   style={{height: window.innerHeight}}>
                 {!eventsLoading && eventsData.map((item, index) => (
                     <BasicCard key={`${index}+${item["Название"]}`} name={item["Название"]} description={item["Описание"]}
-                               timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>
+                               timeEnd={item["Время окончания"]} timeStart={item["Время начала"]} type={item["Тип"]}/>
                 ))}
                 {/*{!dynamicMeditationLoading && dynamicMeditation.map((item, index) => (*/}
                 {/*    <BasicCard key={`${index}+${item["Название"]}`} name={item["Название"]} description={item["Описание"]}*/}
