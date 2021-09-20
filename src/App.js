@@ -1,29 +1,27 @@
 import './App.css';
-import React from "react";
-import  firebase from "firebase";
-import {Main} from "./components/Main";
+import React, {useContext} from "react";
+import {BrowserRouter} from "react-router-dom";
+import {Navbar} from "./components/Navbar";
+import {AppRouter} from "./components/AppRouter";
+import {Context} from "./index";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {Loader} from "./components/Loader";
 
 
 function App() {
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyBV4u3V4MAYqMiGHG3yLdRDeeFjJEjMjmI",
-        authDomain: "test-task-ee265.firebaseapp.com",
-        projectId: "test-task-ee265",
-        storageBucket: "test-task-ee265.appspot.com",
-        messagingSenderId: "1009846406436",
-        appId: "1:1009846406436:web:af2a658881017c91e0f7b1"
-    }
+    const {auth} = useContext(Context);
+    const [,loading ,] = useAuthState(auth);
 
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    } else {
-        firebase.app();
+    if(loading){
+        return <Loader/>
     }
-
     return (
-        <Main/>
+        <BrowserRouter>
+            <Navbar/>
+            <AppRouter/>
+        </BrowserRouter>
+
   );
 }
-
 export default App;

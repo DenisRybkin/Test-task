@@ -6,8 +6,8 @@ export default function BasicCard({name,description,timeEnd,timeStart}) {
 
     return (
         <Box sx={{ m: 3 }}>
-            <Card sx={{ minWidth: 275, m: -2}} >
-                <CardContent>
+            <Card sx={{m: -2}} style={{maxWidth: 350, minWidth: 275}}>
+                <CardContent >
                     <Typography sx={{ fontSize: 18 }} color="primary" gutterBottom>
                         {name}
                     </Typography>

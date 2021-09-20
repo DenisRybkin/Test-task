@@ -13,22 +13,30 @@ export const Main = () => {
 
     const [aymData, aymLoading] = useCollectionData(firestore.collection('Аум'));
 
+    const [eventsData, eventsLoading] = useCollectionData(firestore.collection('events'));
+
+    console.log(eventsData ,dynamicMeditation );
+
     return (
         <Container>
             <Grid container alignItems={"center"} direction={"column"} justifyContent={"center"}
                   style={{height: window.innerHeight}}>
-                {!dynamicMeditationLoading && dynamicMeditation.map((item, index) => (
-                    <BasicCard name={item["Название"]} description={item["Описание"]}
-                        timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>
-                ))}
-                {!yogaLoading && yogaData.map((item, index) => (
-                    <BasicCard name={item["Название"]} description={item["Описание"]}
+                {!eventsLoading && eventsData.map((item, index) => (
+                    <BasicCard key={`${index}+${item["Название"]}`} name={item["Название"]} description={item["Описание"]}
                                timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>
                 ))}
-                {!aymLoading && aymData.map((item, index) => (
-                    <BasicCard name={item["Название"]} description={item["Описание"]}
-                               timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>
-                ))}
+                {/*{!dynamicMeditationLoading && dynamicMeditation.map((item, index) => (*/}
+                {/*    <BasicCard key={`${index}+${item["Название"]}`} name={item["Название"]} description={item["Описание"]}*/}
+                {/*        timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>*/}
+                {/*))}*/}
+                {/*{!yogaLoading && yogaData.map((item, index) => (*/}
+                {/*    <BasicCard  key={`${index}+${item["Название"]}`} name={item["Название"]} description={item["Описание"]}*/}
+                {/*        timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>*/}
+                {/*))}*/}
+                {/*{!aymLoading && aymData.map((item, index) => (*/}
+                {/*    <BasicCard  key={`${index}+${item["Название"]}`} name={item["Название"]} description={item["Описание"]}*/}
+                {/*         timeEnd={item["Время окончания"]} timeStart={item["Время начала"]}/>*/}
+                {/*))}*/}
             </Grid>
         </Container>
     );
